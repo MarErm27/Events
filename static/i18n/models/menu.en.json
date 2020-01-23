@@ -3,8 +3,8 @@
   "fields": {
     "Cost": {
       "display_name": "Cost",
-      "help": "",
-      "pattern_msg": "",
+      "help": "Input numeric characters only in this field.",
+      "pattern_msg": "Your input must be a number.",
       "err_msg": {},
       "Choices": {}
     },
