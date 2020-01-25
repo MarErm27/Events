@@ -67,6 +67,15 @@ func main() {
 	// 	},
 	// )
 
+	// Call the ModelName schema of "menu" model
+	menu := uadmin.Schema["menu"]
+
+	// Include Javascript file for the form
+	menu.IncludeFormJS = []string{"/static/js/menuForm.js"}
+
+	// Pass back the menu variable to apply changes
+	uadmin.Schema["menu"] = menu
+
 	// Activates a uAdmin server
 	uadmin.StartServer()
 }
