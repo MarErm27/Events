@@ -19,16 +19,16 @@ type Menu struct {
 	KitID          uint
 }
 
-// // Save !
-// func (m *Menu) Save() {
-// 	// Prints the result
-// 	uadmin.Trail(uadmin.DEBUG, "The document has changed.")
-// 	m.Sum = m.Number * m.Cost
-// 	// Save the document
-// 	uadmin.Save(m)
-// 	// Sets the document value to the DocumentVersion
+// Save !
+func (m *Menu) Save() {
+	// Prints the result
+	uadmin.Trail(uadmin.DEBUG, "The document has changed.")
+	m.Sum = m.Number * m.Cost
+	// Save the document
+	uadmin.Save(m)
+	// Sets the document value to the DocumentVersion
 
-// }
+}
 
 // func (m Menu) Validate() (ret map[string]string) {
 // 	// ret = map[string]string{}
