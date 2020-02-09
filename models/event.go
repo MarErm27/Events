@@ -22,10 +22,10 @@ type Event struct {
 	// File              string `uadmin:"file"`
 	// Description       string `uadmin:"html"`
 	// RawText           string `uadmin:"list_exclude"`
-	Folder            Folder `uadmin:"filter"`
-	FolderID          uint
-	CreatedDate       time.Time
-	Channel           Channel `uadmin:"list_exclude"`
-	ChannelID         uint
-	CreatedBy         string
+	Folder      Folder `uadmin:"filter"`
+	FolderID    uint
+	CreatedDate time.Time
+	Channel     Channel `uadmin:"list_exclude"`
+	ChannelID   uint
+	CreatedBy   string
 }

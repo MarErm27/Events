@@ -17,6 +17,7 @@ type Menu struct {
 	Sum            int `uadmin:"read_only"`
 	Kit            Kit
 	KitID          uint
+	Description    string `uadmin:"html"`
 }
 
 // Save !

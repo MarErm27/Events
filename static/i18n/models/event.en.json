@@ -78,6 +78,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "Nomenclature": {
+      "display_name": "Nomenclature",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Places": {
       "display_name": "Places",
       "help": "",

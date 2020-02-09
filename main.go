@@ -1,13 +1,23 @@
 package main
 
 import (
-	"github.com/MarErm27/events/models"
+	"net/http"
+
+	"github.com/MarErm27/Events/api"
+	"github.com/MarErm27/Events/models"
 	"github.com/uadmin/uadmin"
 )
 
+func redirectToAdminPage(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/admin/", http.StatusSeeOther)
+}
+
 func main() {
 	// Sets the name of the website that shows on title and dashboard
-	uadmin.SiteName = "Events and excursions"
+	//uadmin.Port = 4500
+	//uadmin.RootURL = "/admin/"
+	//uadmin.SiteName = "Events and excursions"
+
 	uadmin.Register(
 		models.Folder{},
 		models.FolderGroup{},        // place it here
@@ -28,6 +38,13 @@ func main() {
 		models.Nomenclature{},
 		models.Places{},
 	)
+	// Initialize the Setting
+	//setting := uadmin.Setting{}
+
+	// Use update function to apply the assigned value in Settings
+	//uadmin.Update(&setting, "Value", strconv.Itoa(uadmin.Port), "code = ?", "uAdmin.Port")
+	//uadmin.Update(&setting, "Value", uadmin.RootURL, "code = ?", "uAdmin.RootURL")
+	//uadmin.Update(&setting, "Value", uadmin.SiteName, "code = ?", "uAdmin.SiteName")
 	uadmin.RegisterInlines(
 		models.Event{},
 		map[string]string{
@@ -76,6 +93,18 @@ func main() {
 	// Pass back the menu variable to apply changes
 	uadmin.Schema["menu"] = menu
 
+	// Call the ModelName schema of "menu" model
+	event := uadmin.Schema["event"]
+
+	// Include Javascript file for the form
+	event.IncludeFormJS = []string{"/static/js/eventForm.js"}
+
+	// Pass back the menu variable to apply changes
+	uadmin.Schema["event"] = event
+
+	http.HandleFunc("/api/", api.APIHandler)
+	//http.HandleFunc("/table/", views.HTTPHandler)
 	// Activates a uAdmin server
+	http.HandleFunc("/", http.HandlerFunc(redirectToAdminPage))
 	uadmin.StartServer()
 }
